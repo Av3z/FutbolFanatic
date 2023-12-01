@@ -1,20 +1,37 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React, {useState, useEffect} from 'react';
+import { FlatList, View } from 'react-native';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+import api from './src/services/api';
+import Rank from './src/rank';
+
+import { styled } from 'nativewind';
+import { RankHeader } from './src/components/rankHeader';
+
+export default function App(){
+
+  const StyledView = styled(View)
+
+
+  const [rank, setRank] = useState([]);
+
+  useEffect(() => {
+    api.get('campeonatos/10/tabela').then(({data}) => {
+      setRank(data)
+    });
+  }, [])
+
+  return(
+    <StyledView className='flex-1 mt-10 h-screen w-full bg-slate-500'>
+        <FlatList 
+          data={rank}
+          keyExtractor={item => item.posicao}
+          ListHeaderComponent={() => <RankHeader />}
+          renderItem={({item}) => <Rank data={item}/>}
+        />
+
+    </StyledView>
+  )
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+
+
