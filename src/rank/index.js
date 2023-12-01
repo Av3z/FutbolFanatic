@@ -1,16 +1,7 @@
 import React from 'react';
-import {View, Text} from 'react-native';
-import { styled } from 'nativewind';
-
-const StyledView = styled(View)
-const StyledText = styled(Text)
-
+import { StyledView, StyledText } from '../components/StyledComponents';
 
 export default function Rank({ data }){
-
-    console.log(data)
-    
-
 
     return(
 

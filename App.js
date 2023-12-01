@@ -1,15 +1,13 @@
 import React, {useState, useEffect} from 'react';
-import { FlatList, View } from 'react-native';
+import { FlatList} from 'react-native';
 
 import api from './src/services/api';
 import Rank from './src/rank';
 
-import { styled } from 'nativewind';
 import { RankHeader } from './src/components/rankHeader';
+import { StyledView } from './src/components/StyledComponents';
 
 export default function App(){
-
-  const StyledView = styled(View)
 
 
   const [rank, setRank] = useState([]);

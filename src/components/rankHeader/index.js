@@ -1,14 +1,7 @@
 
-import {View, Text} from 'react-native';
-import { styled } from 'nativewind';
-
-
+import { StyledText, StyledView } from '../StyledComponents';
 
 export function RankHeader(){
-
-    const StyledView = styled(View)
-    const StyledText = styled(Text)
-
     return(
         <StyledView className='flex-row bg-slate-200 items-center'>
             <StyledView className='flex-1 border border-slate-300 '>
