@@ -1,32 +1,19 @@
+import { StyledView, StyledText } from '../StyledComponents';
 
-import { StyledText, StyledView } from '../StyledComponents';
+export function RankHeader({ columns }){
 
-export function RankHeader(){
+    const TableColumn = ({ flex, title }) => (
+        <StyledView className={`flex-${flex} border items-center border-slate-200`}>
+          <StyledText>{title}</StyledText>
+        </StyledView>
+      );
+
     return(
-        <StyledView className='flex-row bg-slate-200 items-center'>
-            <StyledView className='flex-1 border border-slate-300 '>
-            <StyledText className='text-center font-bold'>POS</StyledText>
-            </StyledView>
-            <StyledView className='flex-5 border border-slate-300 '>
-            <StyledText className='text-center font-bold'>TIME</StyledText>
-            </StyledView>
-            <StyledView className='flex-1 border border-slate-300 '>
-            <StyledText className='text-center font-bold'>PTS</StyledText>
-            </StyledView>
-            <StyledView className='flex-1 border border-slate-300 '>
-            <StyledText className='text-center font-bold'>J</StyledText>
-            </StyledView>
-            <StyledView className='flex-1 border border-slate-300 '>
-            <StyledText className='text-center font-bold'>V</StyledText>
-            </StyledView>
-            <StyledView className='flex-1 border border-slate-300 '>
-            <StyledText className='text-center font-bold'>E</StyledText>
-            </StyledView>
-            <StyledView className='flex-1 border border-slate-300 '>
-            <StyledText className='text-center font-bold'>D</StyledText>
-            </StyledView>
-            <StyledView className='flex-1 border border-slate-300 '>
-            <StyledText className='text-center font-bold'>SG</StyledText>
+        <StyledView className='flex-row bg-slate-100 items-center'>
+            <StyledView style={{ flexDirection: 'row' }}>
+                {columns.map((column, index) => (
+                <TableColumn key={index} {...column} />
+                ))}
             </StyledView>
         </StyledView>
     )
